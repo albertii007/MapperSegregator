@@ -1,0 +1,9 @@
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\bin\Debug\netcoreapp3.1\SmartMapper.deps.json
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\bin\Debug\netcoreapp3.1\SmartMapper.dll
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\bin\Debug\netcoreapp3.1\SmartMapper.pdb
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.csprojAssemblyReference.cache
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.AssemblyInfoInputs.cache
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.AssemblyInfo.cs
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.csproj.CoreCompileInputs.cache
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.dll
+C:\MyProjects\.Net\Nappox\nappox-company-account\SmartMapper\obj\Debug\netcoreapp3.1\SmartMapper.pdb
