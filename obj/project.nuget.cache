@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "aipM3EmVO0sMXHNIW1c0R7M+wMZhCs8RrxFHHXoG/LvrpsqMfVC6aaeevStiNN+v/NXP6nGRxClScTqsmf6UkA==",
+  "dgSpecHash": "E93Sy6Nb964v/wThUdkl3xQmKbv2lG8ziTCbI5N58BY08iLj4nXMZsqXn2DUkxZJJAUbQIC+dCPepanyS8n56g==",
   "success": true,
-  "projectFilePath": "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\MapperSegregator.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Gewerbe\\Mapper\\MapperSegregator\\MapperSegregator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alber\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\alber\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

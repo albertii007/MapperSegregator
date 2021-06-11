@@ -6,16 +6,18 @@ namespace MapperSegregator.Helpers
 {
     public static class MapperSegregatorHelper
     {
-        private static ISegregatorMapper _smartMapper;
+        private static IMapperSegregator _mapperSegregator;
 
-        public static void Configure(ISegregatorMapper smartMapper)
+        public static void Configure(IMapperSegregator smartMapper)
         {
-            _smartMapper = smartMapper ?? throw new ArgumentNullException(nameof(smartMapper));
+            _mapperSegregator = smartMapper ?? throw new ArgumentNullException(nameof(smartMapper));
         }
 
-        public async static Task<TDestination> Map<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
+        public static IMapperSegregator Mapper => _mapperSegregator;
+
+        public async static Task<TDestination> MapAsync<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
         {
-            return await _smartMapper.Map<TOrigin, TDestination>(origin, objects);
+            return await _mapperSegregator.MapAsync<TOrigin, TDestination>(origin, objects);
         }
     }
 }

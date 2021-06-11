@@ -11,16 +11,17 @@ namespace MapperSegregator.Base
     {
         private readonly IList<object> _funcs = new List<object>();
 
-        private readonly Assembly _assembly;
-        public ProfileMapper(Assembly assembly)
+        private readonly IList<Assembly> _assembly;
+
+        public ProfileMapper(IList<Assembly> assembly)
         {
             _assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
         }
-        private async Task InvokeBuilders(Assembly assembly)
+        private async Task InvokeBuildersAsync(IList<Assembly> assemblies)
         {
             if (_funcs.Any()) return;
 
-            IList<IProfile> types = assembly.GetTypes().Where(x => typeof(IProfile).IsAssignableFrom(x)).Select(x => (IProfile)Activator.CreateInstance(x)).ToList();
+            IList<IProfile> types = assemblies.SelectMany(x => x.GetTypes().Where(x => typeof(IProfile).IsAssignableFrom(x))).Select(x => (IProfile)Activator.CreateInstance(x)).ToList();
 
             foreach (var item in types)
             {
@@ -28,51 +29,28 @@ namespace MapperSegregator.Base
             }
         }
 
-        public async Task LoadBuilders()
+        public async Task LoadBuildersAsync()
         {
-            await InvokeBuilders(_assembly);
+            await InvokeBuildersAsync(_assembly);
         }
 
-        public object GetFunc(Type type1, Type type2, out bool isTask)
+        public (object, bool) GetFunc(Type type1, Type type2)
         {
             var result = _funcs.Where(x => x.GetType().GetGenericArguments()[0] == type1 && x.GetType().GetGenericArguments()[2] == type2).FirstOrDefault();
 
-            if (result != null)
-            {
-                isTask = false;
-                return result;
-            }
-            else
-            {
-                isTask = true;
-                return _funcs.Where(x => x.GetType().GetGenericArguments()[0] == type1 && x.GetType().GetGenericArguments()[2].GetGenericArguments()[0] == type2).FirstOrDefault();
-            }
+            if (result != null) return (result, false);
+
+            return (_funcs.Where(x => x.GetType().GetGenericArguments()[0] == type1 && x.GetType().GetGenericArguments()[2].GetGenericArguments()[0] == type2).FirstOrDefault(), true);
         }
 
-        public Task Builder<TOrigin, TDestination>(Func<TOrigin, object[], TDestination> func)
+        public Task Builder<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, TDestination> func)
         {
             _funcs.Add(func);
 
             return Task.CompletedTask;
         }
 
-        public TClass GetFromParams<TClass>(object[] objList)
-        {
-            var typeClass = typeof(TClass);
-
-            if (typeClass.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>)))
-
-                return (TClass)objList.Where(x => x.GetType().GetGenericArguments()[0] == typeClass.GetGenericArguments()[0]).FirstOrDefault();
-            else
-                return (TClass)objList.Where(x => x.GetType() == typeClass).FirstOrDefault();
-        }
-
-        public Task<TClass> GetFromParamsAsync<TClass>(object[] objList)
-        {
-            return Task.FromResult(GetFromParams<TClass>(objList));
-        }
-
-        public Task Builder<TOrigin, TDestination>(Func<TOrigin, object[], Task<TDestination>> func)
+        public Task Builder<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, Task<TDestination>> func)
         {
             _funcs.Add(func);
 

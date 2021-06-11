@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\MapperSegregator.csproj": {}
+    "D:\\Gewerbe\\Mapper\\MapperSegregator\\MapperSegregator.csproj": {}
   },
   "projects": {
-    "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\MapperSegregator.csproj": {
+    "D:\\Gewerbe\\Mapper\\MapperSegregator\\MapperSegregator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\MapperSegregator.csproj",
+        "projectUniqueName": "D:\\Gewerbe\\Mapper\\MapperSegregator\\MapperSegregator.csproj",
         "projectName": "MapperSegregator",
-        "projectPath": "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\MapperSegregator.csproj",
+        "projectPath": "D:\\Gewerbe\\Mapper\\MapperSegregator\\MapperSegregator.csproj",
         "packagesPath": "C:\\Users\\alber\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProjects\\.Net\\Nappox\\nappox-company-account\\SmartMapper\\obj\\",
+        "outputPath": "D:\\Gewerbe\\Mapper\\MapperSegregator\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\alber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +42,17 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -52,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

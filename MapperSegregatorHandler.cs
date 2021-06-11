@@ -5,30 +5,31 @@ using System.Threading.Tasks;
 
 namespace MapperSegregator
 {
-    public class MapperSegregatorHandler : ISegregatorMapper
+    public class MapperSegregatorHandler : IMapperSegregator
     {
         private readonly ProfileMapper _profileMapper;
+
         public MapperSegregatorHandler(ProfileMapper profile)
         {
             _profileMapper = profile ?? throw new ArgumentNullException(nameof(profile));
         }
 
-        public async Task<TDestination> Map<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
+        public TDestination Map<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
         {
-            await _profileMapper.LoadBuilders();
+            return MapAsync<TOrigin, TDestination>(origin, objects).GetAwaiter().GetResult();
+        }
 
-            var func = _profileMapper.GetFunc(typeof(TOrigin), typeof(TDestination), out bool isTask);
+        public async Task<TDestination> MapAsync<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
+        {
+            await _profileMapper.LoadBuildersAsync();
+
+            var (func, isTask) = _profileMapper.GetFunc(typeof(TOrigin), typeof(TDestination));
 
             if (func == null) throw new Exception($"{typeof(TOrigin).FullName} && {typeof(TDestination).FullName} are not implemented");
 
-            if (isTask)
-            {
-                var result = func.GetType().GetMethod("Invoke").Invoke(func, new object[] { origin, objects }) as Task<TDestination>;
+            if (isTask) return await (func.GetType().GetMethod("Invoke").Invoke(func, new object[] { origin, new MapperOptionHandler(objects) }) as Task<TDestination>);
 
-                return await result;
-            }
-
-            return func.GetType().GetMethod("Invoke").Invoke(func, new object[] { origin, objects }) as TDestination;
+            return func.GetType().GetMethod("Invoke").Invoke(func, new object[] { origin, new MapperOptionHandler(objects) }) as TDestination;
         }
     }
 }
