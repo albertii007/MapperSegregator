@@ -1,6 +1,5 @@
 ﻿using MapperSegregator.Interfaces;
 using System;
-using System.Threading.Tasks;
 
 namespace MapperSegregator.Helpers
 {
@@ -14,10 +13,5 @@ namespace MapperSegregator.Helpers
         }
 
         public static IMapperSegregator Mapper => _mapperSegregator;
-
-        public async static Task<TDestination> MapAsync<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
-        {
-            return await _mapperSegregator.MapAsync<TOrigin, TDestination>(origin, objects);
-        }
     }
 }

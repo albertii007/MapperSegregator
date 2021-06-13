@@ -21,8 +21,6 @@ namespace MapperSegregator
 
         public async Task<TDestination> MapAsync<TOrigin, TDestination>(TOrigin origin, params object[] objects) where TDestination : class
         {
-            await _profileMapper.LoadBuildersAsync();
-
             var (func, isTask) = _profileMapper.GetFunc(typeof(TOrigin), typeof(TDestination));
 
             if (func == null) throw new Exception($"{typeof(TOrigin).FullName} && {typeof(TDestination).FullName} are not implemented");
