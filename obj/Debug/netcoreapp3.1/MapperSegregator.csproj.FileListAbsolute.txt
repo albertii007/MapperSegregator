@@ -16,3 +16,12 @@ D:\Gewerbe\Mapper\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.Asse
 D:\Gewerbe\Mapper\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.csproj.CoreCompileInputs.cache
 D:\Gewerbe\Mapper\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.dll
 D:\Gewerbe\Mapper\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.pdb
+C:\MyProjects\.Net\Packages\MapperSegregator\bin\Debug\netcoreapp3.1\MapperSegregator.deps.json
+C:\MyProjects\.Net\Packages\MapperSegregator\bin\Debug\netcoreapp3.1\MapperSegregator.dll
+C:\MyProjects\.Net\Packages\MapperSegregator\bin\Debug\netcoreapp3.1\MapperSegregator.pdb
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.csprojAssemblyReference.cache
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.AssemblyInfoInputs.cache
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.AssemblyInfo.cs
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.csproj.CoreCompileInputs.cache
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.dll
+C:\MyProjects\.Net\Packages\MapperSegregator\obj\Debug\netcoreapp3.1\MapperSegregator.pdb

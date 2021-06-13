@@ -46,7 +46,7 @@ namespace MapperSegregator.Base
             return (_funcs.Where(x => x.GetType().GetGenericArguments()[0] == type1 && x.GetType().GetGenericArguments()[2].GetGenericArguments()[0] == type2).FirstOrDefault(), true);
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums,Func<TOrigin, MapperOptionHandler, TDestination> func)
+        public Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, Func<TOrigin, MapperOptionHandler, TDestination> func)
         {
             if (enums.Contains(MapperEnum.Single))
             {
@@ -157,6 +157,43 @@ namespace MapperSegregator.Base
             return Task.CompletedTask;
         }
 
+        public Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, Func<TOrigin, MapperOptionHandler, TDestination> func)
+        {
+            if (enumVal == MapperEnum.Single)
+            {
+                _funcs.Add(func);
+            }
+            else if (enumVal == MapperEnum.List)
+            {
+                _funcs.Add(new Func<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
+                {
+                    options.MapperEnum = MapperEnum.List;
+
+                    return origins.Select(x => func(x, options)).ToList();
+                }));
+            }
+            else if (enumVal == MapperEnum.Queryable)
+            {
+                _funcs.Add(new Func<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                {
+                    options.MapperEnum = MapperEnum.Queryable;
+
+                    return await origins.Select(x => func(x, options)).ToListAsync();
+                }));
+            }
+            else if (enumVal == MapperEnum.Array)
+            {
+                _funcs.Add(new Func<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
+                {
+                    options.MapperEnum = MapperEnum.Array;
+
+                    return origins.Select(x => func(x, options)).ToArray();
+                }));
+            }
+
+            return Task.CompletedTask;
+        }
+
         public Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, TDestination> func)
         {
             _funcs.Add(func);
@@ -190,5 +227,7 @@ namespace MapperSegregator.Base
 
             return Task.CompletedTask;
         }
+
+
     }
 }

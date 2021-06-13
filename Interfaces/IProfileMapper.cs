@@ -7,11 +7,12 @@ namespace MapperSegregator.Interfaces
     public interface IProfileMapper
     {
         Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, Task<TDestination>> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, Func<TOrigin, MapperOptionHandler, TDestination> func);
         Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, TDestination> func);
+        Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, MapperOptionHandler, Task<TDestination>> func);
         Task BuildAsync<TOrigin, TDestination>(Func<TOrigin, Task<TDestination>> func);
+        Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, Func<TOrigin, MapperOptionHandler, TDestination> func);
         Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, Func<TOrigin, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum enumFunc, Func<TOrigin, TDestination> func);
+        Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, Func<TOrigin, MapperOptionHandler, TDestination> func);
+        Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, Func<TOrigin, TDestination> func);
     }
 }
