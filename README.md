@@ -79,7 +79,7 @@ public class UserDto : IProfile
   
   public async Task MapData(IProfileMapper profileMapper)
   {
-    /// Now you can map Sinle and List.
+    /// Now you can map Single and List.
      await profileMapper.BuildAsync<User, UserDto>(new[] {MapperEnum.Single, MapperEnum.List, MapperEnum.Queryable},(user, options) => new UserDto
          {
              Id = art.Id,
