@@ -1,5 +1,14 @@
 # MapperSegregatorCore
 
+### How to install?
+
+[![NuGet](https://img.shields.io/badge/Nuget-v5.0.11-blue)](https://www.nuget.org/packages/MapperSegregatorCore/5.0.11)
+
+or on Package Manager
+
+Install-Package MapperSegregatorCore -Version 5.0.11
+
+
 ### What is MapperSegregatorCore?
 
 Mapper segregator core is simple tool that is created for segregating mappings from bussiness logic to DTO.
