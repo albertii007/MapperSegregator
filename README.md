@@ -87,7 +87,7 @@ public class UserDto : IProfile
              City = options.Mapper.Map<City, CityDto>(user.City),
              Books = options.Mapper.Map<Book, BookDto>(user.Books.ToList()),
              ExtraString = options.GetFromParams<string>(), /// result will be "test extra"
-             ExtraNumber = options.GetFromParams<int>(), /// result will be "10"
+             ExtraNumber = options.GetFromParams<int>(), /// result will be 10
          });
      });
   }
