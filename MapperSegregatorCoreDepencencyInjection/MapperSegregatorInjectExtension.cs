@@ -21,7 +21,6 @@ namespace MapperSegregator.Extensions.DependencyInjection
                 services.AddSingleton(x => new MapperDelegateCollection(delegates));
             }
 
-
             services.AddTransient<IMapperSegregator, MapperSegregatorHandler>();
         }
 

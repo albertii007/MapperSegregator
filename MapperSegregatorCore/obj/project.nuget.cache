@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "KGXsNa3esvfpcVxHwi5DuU/m5OjkP4wuIYnXFU3nBGIroecTlXR8uPcbLB08+kvE8QLZtbIJ6MYGoffHtpSL9Q==",
+  "dgSpecHash": "Yng2IcIdGbDKC2mMNHqgfJFnwrkbe2Z8ai8YBJd1GpJH0c0LRf7aTmis6hnmmXn2yVEOh5ddd+whbr4WSdLw+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\MapperSegregator.csproj",
+  "projectFilePath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\MapperSegregator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
-    "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.1\\microsoft.entityframeworkcore.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.1\\microsoft.entityframeworkcore.analyzers.6.0.1.nupkg.sha512",
@@ -19,8 +17,7 @@
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\Arcenox\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\Arcenox\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+    "C:\\Users\\Arcenox\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

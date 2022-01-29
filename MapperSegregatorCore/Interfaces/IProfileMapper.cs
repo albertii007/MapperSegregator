@@ -17,13 +17,10 @@ namespace MapperSegregator.Interfaces
 
     public interface IProfileMapper
     {
-        Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, Task<TDestination>> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, MapperDelegate<TOrigin, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func);
-        Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, MapperDelegate<TOrigin, TDestination> func);
+        Task ToTypeAsync(params MapperEnum[] enums);
+        IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func);
+        IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, TDestination> func);
+        IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>> func);
+        IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, Task<TDestination>> func);
     }
 }

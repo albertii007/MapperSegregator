@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 
 namespace MapperSegregator.Extensions.DependencyInjection.Base
 {
-    public class MapperDelegateCreator : IProfileMapper , IDisposable
+    public class MapperDelegateCreator : IProfileMapper, IDisposable
     {
         private IList<Delegate> Delegates { get; set; } = new List<Delegate>();
 
         private readonly Assembly[] _assemblies;
 
+        private Func<Task> SealedFunc;
+
+        private MapperEnum[] AcceptEnums;
         public MapperDelegateCreator(Assembly[] assemblies)
         {
             _assemblies = assemblies ?? throw new ArgumentNullException(nameof(assemblies));
@@ -29,224 +32,274 @@ namespace MapperSegregator.Extensions.DependencyInjection.Base
 
             foreach (var item in types)
             {
+                AcceptEnums = Array.Empty<MapperEnum>();
+
                 await item.MapData(this);
             }
 
             return Delegates;
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func)
+        public async Task ToTypeAsync(params MapperEnum[] enums)
         {
-            if (enums.Contains(MapperEnum.Single))
-            {
-                Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Single;
-
-                    if (origin == null) return default;
-
-                    return func(origin, options);
-                }));
-            }
-            if (enums.Contains(MapperEnum.List))
-            {
-                Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.List;
-
-                    return origins.Select(x => func(x, options)).ToList();
-                }));
-            }
-            if (enums.Contains(MapperEnum.Queryable))
-            {
-                Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Queryable;
-
-                    return await origins.Select(x => func(x, options)).ToListAsync();
-                }));
-            }
-            if (enums.Contains(MapperEnum.Array))
-            {
-                Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Array;
-
-                    return origins.Select(x => func(x, options)).ToArray();
-                }));
-            }
-
-            return Task.CompletedTask;
+            AcceptEnums = enums;
+            
+            if(SealedFunc != null) await SealedFunc();
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperEnum[] enums, MapperDelegate<TOrigin, TDestination> func)
+        public IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func)
         {
-            if (enums.Contains(MapperEnum.Single))
+            SealedFunc = new Func<Task>(() =>
             {
-                Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+                if (!AcceptEnums.Any()) Delegates.Add(func);
+                else
                 {
-                    options.MapperEnum = MapperEnum.Single;
+                    if (AcceptEnums.Contains(MapperEnum.Single))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Single;
 
-                    if (origin == null) return default;
+                            if (origin == null) return default;
 
-                    return func(origin);
-                }));
-            }
-            if (enums.Contains(MapperEnum.List))
-            {
-                Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.List;
+                            return func(origin, options);
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.List))
+                    {
+                        Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.List;
 
-                    return origins.Select(x => func(x)).ToList();
-                }));
-            }
-            if (enums.Contains(MapperEnum.Queryable))
-            {
-                Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Queryable;
+                            return origins.Select(x => func(x, options)).ToList();
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Queryable))
+                    {
+                        Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Queryable;
 
-                    return await origins.Select(x => func(x)).ToListAsync();
-                }));
-            }
-            if (enums.Contains(MapperEnum.Array))
-            {
-                Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Array;
+                            return await origins.Select(x => func(x, options)).ToListAsync();
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Array))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Array;
 
-                    return origins.Select(x => func(x)).ToArray();
-                }));
-            }
-
-            return Task.CompletedTask;
+                            return origins.Select(x => func(x, options)).ToArray();
+                        }));
+                    }
+                }
+                return Task.CompletedTask;
+            });
+            return this;
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, MapperDelegate<TOrigin, TDestination> func)
+        public IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, TDestination> func)
         {
-            if (enumVal == MapperEnum.Single)
+            SealedFunc = new Func<Task>(() =>
             {
-                Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+                if (!AcceptEnums.Any()) Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) => func(origin)));
+                else
                 {
-                    options.MapperEnum = MapperEnum.Single;
+                    if (AcceptEnums.Contains(MapperEnum.Single))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Single;
 
-                    if (origin == null) return default;
+                            if (origin == null) return default;
 
-                    return func(origin);
-                }));
-            }
-            else if (enumVal == MapperEnum.List)
-            {
-                Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.List;
+                            return func(origin);
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.List))
+                    {
+                        Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.List;
 
-                    return origins.Select(x => func(x)).ToList();
-                }));
-            }
-            else if (enumVal == MapperEnum.Queryable)
-            {
-                Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Queryable;
+                            return origins.Select(x => func(x)).ToList();
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Queryable))
+                    {
+                        Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Queryable;
 
-                    return await origins.Select(x => func(x)).ToListAsync();
-                }));
-            }
-            else if (enumVal == MapperEnum.Array)
-            {
-                Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Array;
+                            return await origins.Select(x => func(x)).ToListAsync();
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Array))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Array;
 
-                    return origins.Select(x => func(x)).ToArray();
-                }));
-            }
+                            return origins.Select(x => func(x)).ToArray();
+                        }));
+                    }
+                }
+                return Task.CompletedTask;
+            });
 
-            return Task.CompletedTask;
+            return this;
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperEnum enumVal, MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func)
+        public IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>> func)
         {
-            if (enumVal == MapperEnum.Single)
+            SealedFunc = new Func<Task>(() =>
             {
-                Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+                if (!AcceptEnums.Any()) Delegates.Add(func);
+                else
                 {
-                    options.MapperEnum = MapperEnum.Single;
+                    if (AcceptEnums.Contains(MapperEnum.Single))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>>(async (origin, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Single;
 
-                    if (origin == null) return default;
+                            if (origin == null) return default;
 
-                    return func(origin, options);
-                }));
-            }
-            else if (enumVal == MapperEnum.List)
-            {
-                Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, IList<TDestination>>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.List;
+                            return await func(origin, options);
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.List))
+                    {
+                        Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.List;
 
-                    return origins.Select(x => func(x, options)).ToList();
-                }));
-            }
-            else if (enumVal == MapperEnum.Queryable)
-            {
-                Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Queryable;
+                            IList<TDestination> destinations = new List<TDestination>();
 
-                    return await origins.Select(x => func(x, options)).ToListAsync();
-                }));
-            }
-            else if (enumVal == MapperEnum.Array)
-            {
-                Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, TDestination[]>((origins, options) =>
-                {
-                    options.MapperEnum = MapperEnum.Array;
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item, options));
+                            }
 
-                    return origins.Select(x => func(x, options)).ToArray();
-                }));
-            }
+                            return destinations;
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Queryable))
+                    {
+                        Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Queryable;
 
-            return Task.CompletedTask;
+                            IList<TDestination> destinations = new List<TDestination>();
+
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item, options));
+                            }
+
+                            return destinations;
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Array))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, Task<TDestination[]>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Array;
+
+                            IList<TDestination> destinations = new List<TDestination>();
+
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item, options));
+                            }
+
+                            return destinations.ToArray();
+                        }));
+                    }
+                }
+                return Task.CompletedTask;
+            });
+
+            return this;
         }
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, TDestination> func)
+        public IProfileMapper Build<TOrigin, TDestination>(MapperDelegate<TOrigin, Task<TDestination>> func)
         {
-            Delegates.Add(func);
-
-            return Task.CompletedTask;
-        }
-
-        public Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, TDestination> func)
-        {
-            Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, TDestination>((origin, options) =>
+            SealedFunc = new Func<Task>(() =>
             {
-                return func(origin);
-            }));
+                if (!AcceptEnums.Any()) Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>>(async (origin, options) => await func(origin)));
+                else
+                {
+                    if (AcceptEnums.Contains(MapperEnum.Single))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>>(async (origin, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Single;
 
-            return Task.CompletedTask;
-        }
+                            if (origin == null) return default;
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>> func)
-        {
-            Delegates.Add(func);
+                            return await func(origin);
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.List))
+                    {
+                        Delegates.Add(new MapperDelegate<IList<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.List;
 
-            return Task.CompletedTask;
-        }
+                            IList<TDestination> destinations = new List<TDestination>();
 
-        public Task BuildAsync<TOrigin, TDestination>(MapperDelegate<TOrigin, Task<TDestination>> func)
-        {
-            Delegates.Add(new MapperDelegate<TOrigin, MapperOptionHandler, Task<TDestination>>(async (origin, options) =>
-            {
-                return await func(origin);
-            }));
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item));
+                            }
 
-            return Task.CompletedTask;
+                            return destinations;
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Queryable))
+                    {
+                        Delegates.Add(new MapperDelegate<IQueryable<TOrigin>, MapperOptionHandler, Task<IList<TDestination>>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Queryable;
+
+                            IList<TDestination> destinations = new List<TDestination>();
+
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item));
+                            }
+
+                            return destinations;
+                        }));
+                    }
+                    if (AcceptEnums.Contains(MapperEnum.Array))
+                    {
+                        Delegates.Add(new MapperDelegate<TOrigin[], MapperOptionHandler, Task<TDestination[]>>(async (origins, options) =>
+                        {
+                            options.MapperEnum = MapperEnum.Array;
+
+                            IList<TDestination> destinations = new List<TDestination>();
+
+                            foreach (var item in origins)
+                            {
+                                destinations.Add(await func(item));
+                            }
+
+                            return destinations.ToArray();
+                        }));
+                    }
+                }
+                return Task.CompletedTask;
+            });
+
+            return this;
         }
 
         public void Dispose()
         {
+            AcceptEnums = Array.Empty<MapperEnum>();
+
             GC.SuppressFinalize(this);
         }
     }

@@ -10,3 +10,14 @@ C:\Users\Arcenox\Documents\MEGA\Cloud Drive\Packages\MapperSegregator\obj\Debug\
 C:\Users\Arcenox\Documents\MEGA\Cloud Drive\Packages\MapperSegregator\obj\Debug\net6.0\MapperSegregator.dll
 C:\Users\Arcenox\Documents\MEGA\Cloud Drive\Packages\MapperSegregator\obj\Debug\net6.0\ref\MapperSegregator.dll
 C:\Users\Arcenox\Documents\MEGA\Cloud Drive\Packages\MapperSegregator\obj\Debug\net6.0\MapperSegregator.pdb
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\bin\Debug\net6.0\MapperSegregator.deps.json
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\bin\Debug\net6.0\MapperSegregator.dll
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\bin\Debug\net6.0\ref\MapperSegregator.dll
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\bin\Debug\net6.0\MapperSegregator.pdb
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.AssemblyInfoInputs.cache
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.AssemblyInfo.cs
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.csproj.CoreCompileInputs.cache
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.dll
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\ref\MapperSegregator.dll
+C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\obj\Debug\net6.0\MapperSegregator.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj": {}
+    "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj": {
-      "version": "6.0.0",
+    "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj": {
+      "version": "6.1.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
+        "projectUniqueName": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
         "projectName": "MapperSegregatorCoreDependencyInjection",
-        "projectPath": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
+        "projectPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
         "packagesPath": "C:\\Users\\Arcenox\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\obj\\",
+        "outputPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -45,7 +45,7 @@
           "dependencies": {
             "MapperSegregatorCore": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.1.0, )"
             },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",

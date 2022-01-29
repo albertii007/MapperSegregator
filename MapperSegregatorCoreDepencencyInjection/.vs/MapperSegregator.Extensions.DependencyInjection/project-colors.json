@@ -5,7 +5,17 @@
       "ProjectGuid": "819f491d-a8ef-4f86-981d-7caa001a57fd",
       "DisplayName": "MapperSegregator.Extensions.DependencyInjection",
       "ColorIndex": 0
+    },
+    "26efd7cf-f0a0-4040-b36d-109d6768ca5f": {
+      "ProjectGuid": "26efd7cf-f0a0-4040-b36d-109d6768ca5f",
+      "DisplayName": "MapperSegregator.Extensions.DependencyInjection",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

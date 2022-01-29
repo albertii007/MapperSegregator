@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\MapperSegregator.csproj": {}
+    "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\MapperSegregator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\MapperSegregator.csproj": {
-      "version": "6.0.0",
+    "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\MapperSegregator.csproj": {
+      "version": "6.1.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\MapperSegregator.csproj",
+        "projectUniqueName": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\MapperSegregator.csproj",
         "projectName": "MapperSegregatorCore",
-        "projectPath": "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\MapperSegregator.csproj",
+        "projectPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\MapperSegregator.csproj",
         "packagesPath": "C:\\Users\\Arcenox\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arcenox\\Documents\\MEGA\\Cloud Drive\\Packages\\MapperSegregator\\obj\\",
+        "outputPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,10 +43,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Http.Abstractions": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.1, )"

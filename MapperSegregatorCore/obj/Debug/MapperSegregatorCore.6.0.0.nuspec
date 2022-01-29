@@ -19,6 +19,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\Arcenox\Documents\MEGA\Cloud Drive\Packages\MapperSegregator\bin\Debug\net6.0\MapperSegregator.dll" target="lib\net6.0\MapperSegregator.dll" />
+    <file src="C:\Users\Arcenox\Desktop\forgit\MapperSegregatorCore\bin\Debug\net6.0\MapperSegregator.dll" target="lib\net6.0\MapperSegregator.dll" />
   </files>
 </package>

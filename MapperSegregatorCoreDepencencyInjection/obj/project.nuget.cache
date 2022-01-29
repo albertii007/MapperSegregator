@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JlZggExwAFQHEwfbW4/Ybk2YUgNiJ01aGNvfHEPXnAzP7QpiS4WJo6FNyNf6Uwz12arH9JUCITRqEgHowklhag==",
+  "dgSpecHash": "D3gnb9rkuc+F7UlGxiNtVNZ/fzEMlP+qAd1JedWRmXyEoEWYA46Qh7gQWS2DIyDe26AjJ/g/5Vvlp7NUD5ZiSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
+  "projectFilePath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Arcenox\\.nuget\\packages\\mappersegregatorcore\\6.0.0\\mappersegregatorcore.6.0.0.nupkg.sha512",
+    "C:\\Users\\Arcenox\\.nuget\\packages\\mappersegregatorcore\\6.1.0\\mappersegregatorcore.6.1.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Arcenox\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",

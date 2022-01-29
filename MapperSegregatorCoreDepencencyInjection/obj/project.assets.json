@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "MapperSegregatorCore/6.0.0": {
+      "MapperSegregatorCore/6.1.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -243,15 +243,15 @@
     }
   },
   "libraries": {
-    "MapperSegregatorCore/6.0.0": {
-      "sha512": "c0uOOMIjyu17M1w99bziW6lJB7+zzPXmr+zMp49nbAu3TRhDpKbmRdgn9rd0+sTAZqZYlTth1PW1engXmZ2IqA==",
+    "MapperSegregatorCore/6.1.0": {
+      "sha512": "o2r51kMzajrHmAsj2Efp81yeTy/Pal3Aqx+dr4FdBKFrX9M1AjisW/tpRp2d5mal5CXw2x7zBKmoGuKilmbTOw==",
       "type": "package",
-      "path": "mappersegregatorcore/6.0.0",
+      "path": "mappersegregatorcore/6.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0/MapperSegregator.dll",
-        "mappersegregatorcore.6.0.0.nupkg.sha512",
+        "mappersegregatorcore.6.1.0.nupkg.sha512",
         "mappersegregatorcore.nuspec"
       ]
     },
@@ -625,7 +625,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "MapperSegregatorCore >= 6.0.0",
+      "MapperSegregatorCore >= 6.1.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0"
     ]
@@ -635,13 +635,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "6.0.0",
+    "version": "6.1.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
+      "projectUniqueName": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
       "projectName": "MapperSegregatorCoreDependencyInjection",
-      "projectPath": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
+      "projectPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\MapperSegregator.Extensions.DependencyInjection.csproj",
       "packagesPath": "C:\\Users\\Arcenox\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arcenox\\Desktop\\MapperSegregator.Extensions.DependencyInjection\\obj\\",
+      "outputPath": "C:\\Users\\Arcenox\\Desktop\\forgit\\MapperSegregatorCoreDepencencyInjection\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -675,7 +675,7 @@
         "dependencies": {
           "MapperSegregatorCore": {
             "target": "Package",
-            "version": "[6.0.0, )"
+            "version": "[6.1.0, )"
           },
           "Microsoft.AspNetCore.Http.Abstractions": {
             "target": "Package",

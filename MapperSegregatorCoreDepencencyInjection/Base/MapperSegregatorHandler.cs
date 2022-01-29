@@ -25,15 +25,8 @@ namespace MapperSegregator.Extensions.DependencyInjection.Base
 
             if (func == null && taskFunc == null) throw new Exception($"{typeof(TOrigin).FullName} && {typeof(TDestination).FullName} are not implemented");
 
-            if (taskFunc != null)
-            {
-                _mapperCollection.LastUsedDelegate = taskFunc;
-
-                return await taskFunc(origin, new MapperOptionHandler(objects));
-            }
-
-            _mapperCollection.LastUsedDelegate = func;
-
+            if (taskFunc != null) return await taskFunc(origin, new MapperOptionHandler(objects));
+            
             return func(origin, new MapperOptionHandler(objects));
         }
     }
