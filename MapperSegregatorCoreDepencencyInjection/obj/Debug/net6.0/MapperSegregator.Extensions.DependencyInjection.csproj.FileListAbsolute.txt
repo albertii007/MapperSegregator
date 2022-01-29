@@ -1,0 +1,12 @@
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\bin\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.deps.json
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\bin\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.dll
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\bin\Debug\net6.0\ref\MapperSegregator.Extensions.DependencyInjection.dll
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\bin\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.pdb
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.csproj.AssemblyReference.cache
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.AssemblyInfoInputs.cache
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.AssemblyInfo.cs
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.csproj.CoreCompileInputs.cache
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.dll
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\ref\MapperSegregator.Extensions.DependencyInjection.dll
+C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\obj\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.pdb

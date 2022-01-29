@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MapperSegregatorCoreDependencyInjection</id>
+    <version>6.0.0</version>
+    <authors>Arcenox</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>Package Description</description>
+    <copyright>Copyright 2021 Arcenox LLC</copyright>
+    <tags>Mapper, Segregator, MappingAbstraction.</tags>
+    <repository url="https://github.com/albertii007/MapperSegregator" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="MapperSegregatorCore" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Abstractions" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Arcenox\Desktop\MapperSegregator.Extensions.DependencyInjection\bin\Debug\net6.0\MapperSegregator.Extensions.DependencyInjection.dll" target="lib\net6.0\MapperSegregator.Extensions.DependencyInjection.dll" />
+  </files>
+</package>

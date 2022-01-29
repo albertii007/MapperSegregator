@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "819f491d-a8ef-4f86-981d-7caa001a57fd": {
+      "ProjectGuid": "819f491d-a8ef-4f86-981d-7caa001a57fd",
+      "DisplayName": "MapperSegregator.Extensions.DependencyInjection",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

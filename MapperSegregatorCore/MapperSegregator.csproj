@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>6.0.0</Version>
+    <Authors>Arcenox</Authors>
+    <Company>Arcenox</Company>
+    <PackageId>MapperSegregatorCore</PackageId>
+    <PackageTags>Mapper, Segregator, MappingAbstraction.</PackageTags>
+    <RepositoryUrl>https://github.com/albertii007/MapperSegregator</RepositoryUrl>
+    <Product>MapperSegregatorCore</Product>
+    <Copyright>Copyright 2021 Arcenox LLC</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
