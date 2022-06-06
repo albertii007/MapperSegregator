@@ -80,6 +80,7 @@ There is a parameter `options` that contains Mapper and some other methodes ex:
         
         public async Task MapData(IProfileMapper profileMapper)
         {
+            // Added options after parameter user.
             await profileMapper.BuildAsync<User, GetUsersModel>(MapperEnum.List, (user, options) => new GetUsersModel
             {
                 Id = user.Id,
